@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page -- Assingment one</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+        }
+        body {
+            background: #ffffff;
+            color: #1e1e2f;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: white;
+            flex-wrap: wrap;
+        }
+
+        .menu {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #1f2937;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+        .menu a:hover {
+            color: #2563eb;
+        }
+
+        .btn-blue {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn-blue:hover {
+            background: #1d4ed8;
+        }
+
+        .big-image {
+            height: 90vh;
+            background: url('assets/banner.jpg') center/cover no-repeat;
+            position: relative;
+        }
+
+        .dark-layer {
+            background: rgba(8, 12, 30, 0.7);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .dark-layer h1 {
+            font-size: 4.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .dark-layer h1 i {
+            font-style: italic;
+            font-weight: 300;
+            color: #a5c9ff;
+        }
+
+        .dark-layer p {
+            max-width: 680px;
+            font-size: 1.25rem;
+            line-height: 1.7;
+            margin-bottom: 2.2rem;
+        }
+
+        .white-btn {
+            background: #ffffff;
+            color: #0f172a;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .white-btn:hover {
+            background: #f0f4ff;
+        }
+
+        .section-box {
+            padding: 80px 8%;
+            text-align: center;
+        }
+
+        .big-title {
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .small-desc {
+            color: #4b5563;
+            max-width: 700px;
+            margin: 0 auto 5px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .speaker-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 35px;
+            margin-top: 30px;
+        }
+
+        .speaker-box {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
+            text-align: left;
+            border: 1px solid #edf2f7;
+        }
+
+        .speaker-box img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            background: #eef2f6;
+        }
+
+        .speaker-box .tag {
+            color: #2563eb;
+            font-weight: 600;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            padding: 18px 22px 4px;
+        }
+
+        .speaker-box h3 {
+            font-size: 1.5rem;
+            padding: 0 22px;
+            font-weight: 600;
+        }
+
+        .speaker-box p {
+            padding: 6px 22px 22px;
+            color: #4b5563;
+        }
+
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .price-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 5px;
+            padding: 34px 28px;
+            text-align: left;
+        }
+
+        .price-card h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .price-card .dollar {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin: 16px 0 10px;
+            color: #0f172a;
+        }
+
+        .price-card ul {
+            list-style: none;
+            margin: 20px 0 28px;
+        }
+
+        .price-card li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .price-card li::before {
+            color: #2563eb;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .price-card.highlight {
+            background: #0f172a;
+            color: white;
+            border-color: #0f172a;
+            transform: scale(1.02);
+        }
+
+        .price-card.highlight .dollar {
+            color: white;
+        }
+
+        
+
+        .price-card.highlight li::before {
+            color: #94b9ff;
+        }
+
+        .price-card .btn-outline {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 14px 0;
+            width: 100%;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .price-card .btn-outline:hover {
+            background: #1d4ed8;
+        }
+
+        .price-card.highlight .btn-outline {
+            background: white;
+            color: #0f172a;
+        }
+
+        .price-card.highlight .btn-outline:hover {
+            background: #e5e9f0;
+        }
+
+        .prot {
+            color: #94b9ff;
+        }
+
+        .contact-area {
+            background: #f8faff;
+            padding: 80px 8%;
+            text-align: center;
+        }
+
+        .contact-form {
+            max-width: 620px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 16px 20px;
+            border: 1px solid #d1d9e6;
+            border-radius: 30px;
+            font-size: 1rem;
+            background: white;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+
+        .contact-form textarea {
+            border-radius: 24px;
+            resize: vertical;
+        }
+
+        .contact-form .send-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 16px 28px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            width: fit-content;
+            margin: 10px auto 0;
+        }
+
+        .contact-form .send-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .footer {
+            background: #595959;
+            color: #e6edf5;
+            padding: 40px 8%;
+        }
+
+        .bottom-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .bottom-flex h2 {
+            font-weight: 500;
+            font-size: 1.8rem;
+            letter-spacing: -0.5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links i {
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: #b0c4de;
+        }
+
+        .social-links i:hover {
+            color: white;
+        }
+
+        .footer hr {
+            margin: 28px 0 20px;
+            border: 0.5px solid #6c6c6c;
+        }
+
+        .copy {
+            text-align: center;
+            color: #9aaec9;
+            font-size: 0.95rem;
+        }
+
+        .social-links i {
+            transition: color 0.3s ease;
+            color: #b0c4de;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="top-bar">
+        <div class="logo">
+            <img src="assets/logo.png" alt="logo" width="150">
+        </div>
+        <ul class="menu">
+            <li><a href="#">Speakers</a></li>
+            <li><a href="#">Schedule</a></li>
+            <li><a href="#">Tracks</a></li>
+            <li><a href="#">Venue</a></li>
+            <li><a href="#">Blog</a></li>
+        </ul>
+        <button class="btn-blue">Register Now</button>
+    </nav>
+
+    <div class="big-image">
+        <div class="dark-layer">
+            <h1>Code. Connect. Create</h1>
+            <p>Join 4,000+ engineers, founders, and builders at the premier developer conference of 2026. Three days of cutting-edge talks, hands-on workshops, and meaningful connections.</p>
+            <button class="btn-blue">Register Now</button>
+        </div>
+    </div>
+
+    <div class="section-box">
+        <h2 class="big-title">Meet the Speakers</h2>
+        <p class="small-desc">Industry leaders sharing insights on AI, cloud, frontend & security.</p>
+        <div class="speaker-grid">
+            <div class="speaker-box">
+                <img src="assets/andrej.png" alt="Andrej">
+                <div class="tag">AI / ML</div>
+                <h3>Andrej Karpathy</h3>
+                <p>Pretraining team, Anthropic</p>
+            </div>
+            <div class="speaker-box">
+                <img src="assets/demis.png" alt="Demis">
+                <div class="tag">Cloud & DevOps</div>
+                <h3>Demis Hassabis</h3>
+                <p>Co-Founder and CEO, Google DeepMind</p>
+            </div>
+            <div class="speaker-box">
+                <img src="assets/gary.png" alt="Gary">
+                <div class="tag">Frontend</div>
+                <h3>Gary Marcus</h3>
+                <p>Staff Engineer, Vercel</p>
+            </div>
+            <div class="speaker-box">
+                <img src="assets/mustafa.png" alt="Mustafa">
+                <div class="tag">Security</div>
+                <h3>Mustafa Suleyman</h3>
+                <p>CEO of Microsoft AI</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-box" style="background: #fafcff;">
+        <h2 class="big-title">Secure Your Spot</h2>
+        <p class="small-desc">Early bird pricing ends August 15, 2026.</p>
+        <div class="price-grid">
+            <div class="price-card">
+                <h3>Standard</h3>
+                <div class="dollar">$399</div>
+                <p>per person</p>
+                <br>
+                <hr>
+                <ul>
+                    <li>3 Conference Days</li>
+                    <li>48 Technical Talks</li>
+                    <li>Lunch Included</li>
+                    <li>Recordings</li>
+                </ul>
+                <button class="btn-outline">Get Standard</button>
+            </div>
+            <div class="price-card highlight">
+                <h3 class="prot">Pro</h3>
+                <div class="dollar">$749</div>
+                <p>per person</p>
+                <br>
+                <hr>
+                <ul>
+                    <li>Everything in Standard</li>
+                    <li>Unlimited Workshops</li>
+                    <li>VIP Networking</li>
+                    <li>Speaker Meet & Greet</li>
+                </ul>
+                <button class="btn-outline">Get Pro</button>
+            </div>
+            <div class="price-card">
+                <h3>Team</h3>
+                <div class="dollar">$5,999</div>
+                <p>per person</p>
+                <br>
+                <hr>
+                <ul>
+                    <li>10 Tickets</li>
+                    <li>Private Lounge</li>
+                    <li>Company Booth</li>
+                    <li>Priority Support</li>
+                </ul>
+                <button class="btn-outline">Contact Us</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-area">
+        <h2 class="big-title">Contact Us</h2>
+        <p class="small-desc">Have questions about DEVCONF 2026? We'd love to hear from you. Reach out and we'll get back soon.</p>
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit" class="send-btn">Send Message</button>
+        </form>
+    </div>
+
+    <div class="footer">
+        <div class="bottom-flex">
+            <img src="assets/logo.png" alt="logo" width="150">
+            <div class="social-links">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-linkedin-in"></i>
+                <i class="fab fa-instagram"></i>
+            </div>
+        </div>
+        <hr>
+        <div class="copy">
+            © 2026 DEVCONF. All Rights Reserved.
+        </div>
+    </div>
+
+</body>
+</html>
